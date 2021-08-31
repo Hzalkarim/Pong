@@ -772,7 +772,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 85dfa2418d0219d48a48cb1e42d9bd1c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &1875235398
 SpriteRenderer:
@@ -851,8 +851,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71936b7e934ecc64281076a7f1f5ab6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xInitialForce: 75
-  _yInitialForce: 15
+  _initialForce: 75
+  _xInitialDirection: 50
+  _yInitialDirection: 15
 --- !u!58 &1875235401
 CircleCollider2D:
   m_ObjectHideFlags: 0

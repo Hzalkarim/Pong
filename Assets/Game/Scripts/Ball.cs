@@ -10,9 +10,12 @@ namespace Hafizh.InternAgate.DiloSubmission.Pong.Controller
         private Rigidbody2D _rigidbody2D;
 
         [SerializeField]
-        private float _xInitialForce;
+        private float _initialForce = 75f;
         [SerializeField]
-        private float _yInitialForce;
+        private float _xInitialDirection;
+        [SerializeField]
+        private float _yInitialDirection;
+
         // Start is called before the first frame update
     
         private void Awake()
@@ -38,18 +41,22 @@ namespace Hafizh.InternAgate.DiloSubmission.Pong.Controller
 
         private void PushBall()
         {
-            float randomYForce = Random.Range(-_yInitialForce, _yInitialForce);
+            float randomYForce = Random.Range(-_yInitialDirection, _yInitialDirection);
 
             float randomDir = Random.Range(0f, 2f);
 
-            if (randomDir < 1f)
-            {
-                _rigidbody2D.AddForce(new Vector2(-_xInitialForce, randomYForce));
-            }
-            else
-            {
-                _rigidbody2D.AddForce(new Vector2(_xInitialForce, randomYForce));
-            }
+            //if (randomDir < 1f)
+            //{
+            //    _rigidbody2D.AddForce(new Vector2(-_xInitialForce, randomYForce));
+            //}
+            //else
+            //{
+            //    _rigidbody2D.AddForce(new Vector2(_xInitialForce, randomYForce));
+            //}
+
+            bool toLeft = randomDir < 1f;
+            Vector2 pushDirection = new Vector2(_xInitialDirection * (toLeft ? -1 : 1), randomYForce).normalized;
+            _rigidbody2D.AddForce(pushDirection * _initialForce);
         }
     }
 }
